@@ -1,0 +1,48 @@
+﻿@page
+@model RazorPages_TestProject_HelemaalOpnieuwMaken.Pages.Parts.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].PartName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].PartType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].PartPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Part) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartPrice)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PartID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PartID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PartID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
